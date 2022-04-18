@@ -2,11 +2,11 @@ import BlogCard from "../components/BlogCard";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import { Client } from "@notionhq/client";
-import Link from "next/link";
+import PageContainer from "../components/PageContainer";
 
 export default function Home({ blogs }) {
   return (
-    <div className="max-w-[800px] flex flex-col gap-[60px] py-[60px] mx-auto z-10">
+    <PageContainer>
       <Hero />
       <div className="flex flex-col gap-5">
         <h2 className="underline underline-offset-1 text-xl">
@@ -19,7 +19,7 @@ export default function Home({ blogs }) {
         </div>
       </div>
       <Footer />
-    </div>
+    </PageContainer>
   );
 }
 

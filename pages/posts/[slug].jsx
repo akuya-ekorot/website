@@ -7,20 +7,13 @@ import ParagraphBlock from "../../components/ParagraphBlock";
 import LightBackground from "../../components/LightBackground";
 import Link from "next/link";
 import Footer from "../../components/Footer";
+import PageContainer from "../../components/PageContainer";
+import NavigationBar from "../../components/NavigationBar";
 
 export default function Blog({ blocks }) {
   return (
-    <div className="max-w-[800px] flex flex-col gap-[40px] py-[60px] mx-auto">
-      <LightBackground>
-        <div className="flex flex-row justify-center gap-4 underline p-2">
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/posts">
-            <a>Blogs</a>
-          </Link>
-        </div>
-      </LightBackground>
+    <PageContainer>
+      <NavigationBar></NavigationBar>
       <LightBackground>
         <div className="flex flex-col gap-2 max-w-[800px] mx-auto">
           {blocks?.map((block) => {
@@ -43,7 +36,7 @@ export default function Blog({ blocks }) {
         </div>
       </LightBackground>
       <Footer />
-    </div>
+    </PageContainer>
   );
 }
 
