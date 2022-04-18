@@ -4,7 +4,7 @@ import Caption from "./Caption";
 export default function ImageBlock({ block }) {
   return (
     <figure>
-      <div className="relative w-full h-[500px]">
+      <div className="relative w-full h-[450px]">
         <Image
           src={block[block.type][block[block.type].type]?.url}
           alt=""

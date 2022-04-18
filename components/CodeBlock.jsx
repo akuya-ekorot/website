@@ -1,4 +1,4 @@
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, atomOneLight } from "react-code-blocks";
 import Caption from "./Caption";
 
 export default function CodeBlock({ block }) {
@@ -11,7 +11,7 @@ export default function CodeBlock({ block }) {
         language={block[block.type].language}
         showLineNumbers="true"
         wrapLines
-        theme={dracula}
+        theme={atomOneLight}
       />
       <Caption block={block} />
     </figure>

@@ -1,47 +1,49 @@
-import { useRouter } from "next/router";
 import { Client } from "@notionhq/client";
-import { CopyBlock, github } from "react-code-blocks";
-import styleRichText from "../../lib/styleRichText";
 import ImageBlock from "../../components/ImageBlock";
 import VideoBlock from "../../components/VideoBlock";
 import CodeBlock from "../../components/CodeBlock";
 import HeadingBlock from "../../components/HeadingBlock";
 import ParagraphBlock from "../../components/ParagraphBlock";
+import LightBackground from "../../components/LightBackground";
+import Link from "next/link";
+import Footer from "../../components/Footer";
 
 export default function Blog({ blocks }) {
-  const router = useRouter();
-  const { slug } = router.query;
-
-  blocks.map((block) => {
-    // console.log(block.content[block.content.type]?.url);
-    console.log(block.type);
-    console.log(block[block.type]);
-    // console.log(block[block.type].type);
-    console.log(block[block.type][block[block.type].type]?.url);
-  });
-
   return (
-    <>
-      <div className="text-lg font-medium flex flex-col gap-2 max-w-[800px] mx-auto">
-        {blocks?.map((block) => {
-          return block.type == "image" ? (
-            <ImageBlock block={block} />
-          ) : block.type == "video" ? (
-            <VideoBlock block={block} />
-          ) : block.type == "code" ? (
-            <CodeBlock block={block} />
-          ) : block.type == "heading_1" ? (
-            <HeadingBlock block={block} hType="h1" />
-          ) : block.type == "heading_2" ? (
-            <HeadingBlock block={block} hType="h2" />
-          ) : block.type == "heading_3" ? (
-            <HeadingBlock block={block} hType="h3" />
-          ) : (
-            <ParagraphBlock block={block} />
-          );
-        })}
-      </div>
-    </>
+    <div className="max-w-[800px] flex flex-col gap-[40px] py-[60px] mx-auto">
+      <LightBackground>
+        <div className="flex flex-row justify-center gap-4 underline p-2">
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+          <Link href="/posts">
+            <a>Blogs</a>
+          </Link>
+        </div>
+      </LightBackground>
+      <LightBackground>
+        <div className="flex flex-col gap-2 max-w-[800px] mx-auto">
+          {blocks?.map((block) => {
+            return block.type == "image" ? (
+              <ImageBlock block={block} />
+            ) : block.type == "video" ? (
+              <VideoBlock block={block} />
+            ) : block.type == "code" ? (
+              <CodeBlock block={block} />
+            ) : block.type == "heading_1" ? (
+              <HeadingBlock block={block} hType="h1" />
+            ) : block.type == "heading_2" ? (
+              <HeadingBlock block={block} hType="h2" />
+            ) : block.type == "heading_3" ? (
+              <HeadingBlock block={block} hType="h3" />
+            ) : (
+              <ParagraphBlock block={block} />
+            );
+          })}
+        </div>
+      </LightBackground>
+      <Footer />
+    </div>
   );
 }
 
@@ -104,7 +106,6 @@ export async function getStaticPaths() {
         },
       });
     });
-    // console.log(blogs);
     return blogs;
   }
 
