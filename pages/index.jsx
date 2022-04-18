@@ -2,6 +2,7 @@ import BlogCard from "../components/BlogCard";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import { Client } from "@notionhq/client";
+import Link from "next/link";
 
 export default function Home({ blogs }) {
   return (
@@ -37,14 +38,18 @@ export async function getStaticProps() {
 
   function getBlogsDetails(response) {
     const blogs = [];
+
     response?.results?.map((blog) => {
       const date = new Date(
         ...blog.properties["Date Published"].date.start.split("-")
       ).toDateString();
+
       const id = blog.id;
+
       const imageUrl = blog.cover
-        ? blog.cover.external.url
+        ? blog.cover[blog.cover.type].url
         : "/assets/avatar.jpg";
+
       const title = blog.properties.Name.title[0].plain_text;
 
       blogs.push({
