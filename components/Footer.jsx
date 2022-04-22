@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LightBackground from "./LightBackground";
+import SocialIcon from "./SocialIcon";
 
 export default function Footer() {
   return (
@@ -12,18 +13,16 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-2">
           <p>Other places I hang out on the internet</p>
           <div className="flex flex-row gap-3">
-            <Image
-              src="/assets/twitter.png"
+            <SocialIcon
+              icon="/assets/twitter.png"
               alt="Twitter Logo"
-              width="25px"
-              height="25px"
-            ></Image>
-            <Image
-              src="/assets/instagram.png"
-              alt="instagram Logo"
-              width="25px"
-              height="25px"
-            ></Image>
+              link="https://twitter.com/akuya_ekorot"
+            />
+            <SocialIcon
+              icon="/assets/instagram.png"
+              alt="Instagram Logo"
+              link="https://www.instagram.com/akuya_ekorot"
+            />
           </div>
         </div>
       </div>
