@@ -41,7 +41,15 @@ export async function getStaticProps() {
 
     response?.results?.map((blog) => {
       const date = new Date(
-        ...blog.properties["Date Published"].date.start.split("-")
+        ...blog.properties["Date Published"].date.start
+          .split("-")
+          .map((e, i) => {
+            if (i != 1) {
+              return +e;
+            } else {
+              return +e - 1;
+            }
+          })
       ).toDateString();
 
       const id = blog.id;
